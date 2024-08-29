@@ -2,7 +2,7 @@
   "name": "create-test-files",
   "displayName": "Create .test. files",
   "description": "Quickly spawn .test. files next to your code — because testing deserves to be close to the action!",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "publisher": "YevhenNahalskyi",
   "engines": {
     "vscode": "^1.92.0"
