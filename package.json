@@ -1,24 +1,23 @@
 {
   "name": "create-test-file",
-  "displayName": "create-test-file",
-  "description": "Create the test files for the files with js, jsx, ts and tsx extensions",
-  "version": "0.0.1",
+  "displayName": "Create .test. File",
+  "description": "Quickly spawn .test. files next to your code — because testing deserves to be close to the action!",
+  "version": "0.1.0",
   "publisher": "yevhen-nahalskyi",
   "engines": {
     "vscode": "^1.92.0"
   },
-  "categories": [
-    "Other"
-  ],
-  "activationEvents": [
-    "*"
-  ],
   "main": "./dist/extension.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ltclmbdev/vscode-create-test-file"
+  },
+  "icon": "assets/logo.png",
   "contributes": {
     "commands": [
       {
         "command": "extension.createTestFile",
-        "title": "Create .test File"
+        "title": "create .test file"
       }
     ],
     "menus": {
