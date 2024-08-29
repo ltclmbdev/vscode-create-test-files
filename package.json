@@ -17,7 +17,7 @@
     "commands": [
       {
         "command": "extension.createTestFile",
-        "title": "Create .test. file"
+        "title": "Create .test. files"
       }
     ],
     "menus": {
