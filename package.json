@@ -1,6 +1,6 @@
 {
-  "name": "create-test-file",
-  "displayName": "Create .test. File",
+  "name": "create-test-files",
+  "displayName": "Create .test. files",
   "description": "Quickly spawn .test. files next to your code — because testing deserves to be close to the action!",
   "version": "0.1.0",
   "publisher": "yevhen-nahalskyi",
@@ -10,14 +10,14 @@
   "main": "./dist/extension.js",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ltclmbdev/vscode-create-test-file"
+    "url": "https://github.com/ltclmbdev/vscode-create-test-files"
   },
   "icon": "assets/logo.png",
   "contributes": {
     "commands": [
       {
         "command": "extension.createTestFile",
-        "title": "create .test file"
+        "title": "Create .test. file"
       }
     ],
     "menus": {
