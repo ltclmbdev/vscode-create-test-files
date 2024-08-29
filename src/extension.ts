@@ -1,26 +1,43 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
-import * as vscode from 'vscode';
+import * as vscode from "vscode";
+import * as path from "path";
+import * as fs from "fs";
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
+  let disposable = vscode.commands.registerCommand(
+    "extension.createTestFile",
+    (fileUri: vscode.Uri) => {
+      // If no fileUri is provided, show an error message
+      if (!fileUri) {
+        vscode.window.showErrorMessage(
+          "No file selected. Please select a file to create a corresponding .test file."
+        );
+        return;
+      }
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "create-test-file" is now active!');
+      // Get the original file path and extension
+      const originalFilePath = fileUri.fsPath;
+      const originalFileName = path.basename(originalFilePath);
+      const originalFileDir = path.dirname(originalFilePath);
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('create-test-file.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from create-test-file!');
-	});
+      // Extract file name and extension
+      const fileNameWithoutExt = path.parse(originalFileName).name;
+      const fileExt = path.extname(originalFileName);
 
-	context.subscriptions.push(disposable);
+      // Construct the new file name with .test before the extension
+      const newFileName = `${fileNameWithoutExt}.test${fileExt}`;
+      const newFilePath = path.join(originalFileDir, newFileName);
+
+      // Create an empty file at the new file path
+      fs.writeFileSync(newFilePath, "", "utf8");
+
+      // Open the new file in the editor
+      vscode.window.showTextDocument(vscode.Uri.file(newFilePath));
+
+      vscode.window.showInformationMessage(`Created ${newFileName}`);
+    }
+  );
+
+  context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
 export function deactivate() {}
